@@ -37,6 +37,7 @@ build-iPhoneSimulator/
 /_yardoc/
 /doc/
 /rdoc/
+.idea/
 
 ## Environment normalization:
 /.bundle/
@@ -54,3 +55,12 @@ build-iPhoneSimulator/
 
 # Used by RuboCop. Remote config files pulled in from inherit_from directive.
 # .rubocop-https?--*
+
+# Ignore contents test_result folders
+test_results/
+test_results/screenshot/
+
+# Keep folder in Git
+!test_results/.gitkeep
+!test_results/screenshot/.gitkeep
+
