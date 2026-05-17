@@ -1,37 +1,27 @@
 require 'rspec'
-require 'capybara'
-require 'capybara/rspec'
-require "capybara/cuprite"
-require 'capybara-screenshot/rspec'
 require 'site_prism'
 require_relative 'page_objects/pages'
 
+Dir[File.dirname(__FILE__) + '/helpers/*.rb'].each {|file| require file }
+
 RSpec.configure do |config|
   config.include Capybara::DSL
+  config.include CupriteHelpers
 
+  # Run tests in random order
+  config.order = :random
   # Test Setup
   config.before(:example, type: :feature) do
-    # Driver Setup
-    Capybara.javascript_driver = :cuprite
-    Capybara.register_driver(:cuprite) do |app|
-      Capybara::Cuprite::Driver.new(app, window_size: [1200, 800])
-    end
-
-    # Screen shot setup
-    Capybara::Screenshot.register_driver(:cuprite) do |driver,path|
-      driver.save_screenshot(path)
-    end
-    Capybara::Screenshot.autosave_on_failure = true
-
-    Capybara.app_host = 'https://practicetestautomation.com/'
-    Capybara.run_server = false
-    Capybara.default_max_wait_time = 30
-    Capybara.save_path = './test_results/screenshot'
-    Capybara.current_driver = :cuprite
+    include CapybaraHelper
   end
 
   # Test Clean Up
   config.append_after(:example, type: :feature) do
+    # Clear Browesr data
+    page.driver.clear_network_traffic
+    page.driver.clear_memory_cache
+    page.driver.clear_cookies
+    page.driver.browser.reset
     Capybara.reset_sessions!
   end
 end
