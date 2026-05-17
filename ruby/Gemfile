@@ -8,3 +8,5 @@ gem "ferrum"
 gem "cuprite"
 gem "rspec"
 gem "site_prism"
+gem "lockbox"
+gem 'dotenv'
