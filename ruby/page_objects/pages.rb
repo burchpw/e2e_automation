@@ -10,4 +10,8 @@ class Pages
     LogoutPage.new
   end
 
+  def exception_page
+    ExceptionPage.new
+  end
+
 end

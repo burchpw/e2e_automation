@@ -9,4 +9,5 @@ class LoginPage < SitePrism::Page
   def submit_button
     Capybara.find_button('Submit')
   end
+
 end

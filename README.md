@@ -2,7 +2,7 @@
 Project to showcase E2E Automation
 
 ## Test Site
-Test Austomation built to run against [Practice Test Austomation](https://practicetestautomation.com/practice/)
+Test Automation built to run against [Practice Test Austomation](https://practicetestautomation.com/practice/)
 
 ## Ruby Automation
 Ruby Version: 4.02  
@@ -21,13 +21,19 @@ Ruby browser based testing using Chrome browser API
 
 ### Running Tests
 Tests Run Headless on local chrome browser by default:  
-`bundle exec rspec `specs/**/*_spec.rb`
+```bash
+bundle exec rspec specs/**/*_spec.rb
+```
 
 Run Tests Non Headless:   
-`HEADLESS=false bundle exec rspec specs/**/*_spec.rb`
+```bash
+HEADLESS=false bundle exec rspec specs/**/*_spec.rb
+```
 
 Run Tests with inspector for Debugging:   
-`INSPECTOR=true HEADLESS=false bundle exec rspec specs/**/*_spec.rb`
+```bash
+INSPECTOR=true HEADLESS=false bundle exec rspec specs/**/*_spec.rb
+```
 
 ### Cuprite Helpers
 `pause` add to a spec to pause execution at that code location

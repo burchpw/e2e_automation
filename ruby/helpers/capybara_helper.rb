@@ -26,7 +26,6 @@ module CapybaraHelper
   end
   Capybara::Screenshot.autosave_on_failure = true
 
-  Capybara.current_driver = :cuprite
   # Set Capybara config
   Capybara.configure do |c|
     c.javascript_driver = :cuprite
@@ -36,4 +35,6 @@ module CapybaraHelper
     c.save_path = './test_results/screenshot'
     c.default_driver = :cuprite
   end
+
+  Capybara.current_driver = :cuprite
 end
