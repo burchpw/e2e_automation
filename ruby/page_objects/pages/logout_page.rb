@@ -5,4 +5,5 @@ class LogoutPage < SitePrism::Page
   def log_out_button
     Capybara.find_link('Log out')
   end
+
 end

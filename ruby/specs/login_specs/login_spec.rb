@@ -20,7 +20,7 @@ describe 'user login', type: :feature do
     login_page.submit_button.visible?
     login_page.submit_button.click
 
-    expect(@pages.logout_page.log_out_button.visible?)
+    expect(@pages.logout_page.log_out_button.visible?).to be true
   end
 
   it 'handles incorrect user_name' do
