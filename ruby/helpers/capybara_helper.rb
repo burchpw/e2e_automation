@@ -6,12 +6,19 @@ require 'capybara-screenshot/rspec'
 module CapybaraHelper
   # Driver Setup
   Capybara.register_driver(:cuprite) do |app|
+    # Browser Options passed to chrome
+    browser_options = {
+        "no-sandbox" => "true",
+        "disable-dev-shm-usage" => "true"
+    }
+
     Capybara::Cuprite::Driver
         .new(
             app,
             **{
                 inspector: ENV['INSPECTOR'],
                 window_size: [1200, 1600],
+                browser_options: browser_options,
                 headless: ENV['HEADLESS'].nil? ? true : ENV['HEADLESS'] == "true",
                 js_errors: true,
                 timeout: 10,

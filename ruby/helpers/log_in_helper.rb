@@ -7,7 +7,7 @@ module LogInHelper
     Dotenv.load
     Codec
         .new(
-            key: ENV['credentials_key'],
+            key: ENV['CREDENTIAL_KEY'],
             file_path: '../encrypted_data/credentials.yml'
         )
         .load_file
