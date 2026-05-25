@@ -14,4 +14,8 @@ class Pages
     ExceptionPage.new
   end
 
+  def table_page
+    TablePage.new
+  end
+
 end

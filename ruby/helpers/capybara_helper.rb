@@ -11,7 +11,7 @@ module CapybaraHelper
             app,
             **{
                 inspector: ENV['INSPECTOR'],
-                window_size: [1200, 800],
+                window_size: [1200, 1600],
                 headless: ENV['HEADLESS'].nil? ? true : ENV['HEADLESS'] == "true",
                 js_errors: true,
                 timeout: 10,
