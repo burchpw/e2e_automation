@@ -1,0 +1,13 @@
+services:
+  app:
+    image: ruby_automation
+    build:
+      context: .
+    environment:
+      CREDENTIAL_KEY: ${CREDENTIAL_KEY}
+    volumes:
+      - ${PWD}/test_results/screenshot:/ruby/test_results/screenshot
+    command:
+      - bash
+      - -c
+      - 'bundle exec rspec specs/**/*_spec.rb'
