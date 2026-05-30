@@ -10,7 +10,10 @@ Ruby browser based testing using Chrome browser API
 4. [Docker](#docker)
    - [Build Docker Image](#build-docker-image)
    - [Run Tests In Docker](#running-tests-in-docker)
-
+5. [Docker Compose](#docker-compose)
+   - [Builder Docker Compose Image](#build-image-with-docker-compose)
+   - [Run Test With Docker Compose](#running-test-in-docker-compose)
+   
 ## Development Environment 
 Ruby Version: 4.02  
 Bundler Version: 4.0.6  
@@ -101,7 +104,7 @@ docker build -t ruby_automation:latest .
 
 This creates an image named `ruby_automation` with the image tag being `latest`
 
-### Running Tests in Docker
+### Running Tests In Docker
 After building the docker image run the following command to run the tests:  
 ```bash
 docker run --rm -e CREDENTIAL_KEY=#{key} -v `pwd`/test_results/screenshot:/ruby/test_results/screenshot ruby_automation:latest bash -c 'bundle exec rspec specs/**/*_spec.rb'
@@ -109,3 +112,16 @@ docker run --rm -e CREDENTIAL_KEY=#{key} -v `pwd`/test_results/screenshot:/ruby/
 
 This will run the tests using docker and show progress. Any error screen shots will be saved to the 
 `test_results/screenshot` folder locally.
+
+## Docker Compose
+### Build Image With Docker Compose
+Run the following command to build:   
+```bash
+docker compose build
+```
+
+### Running Test In Docker Compose
+After building the docker image:
+```bash
+docker compose up
+```
