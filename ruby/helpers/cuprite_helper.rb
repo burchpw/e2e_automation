@@ -1,4 +1,4 @@
-module CupriteHelpers
+module CupriteHelper
   # drop pause in specs to pause browser
   def pause
     page.driver.pause

@@ -6,7 +6,7 @@ Dir[File.dirname(__FILE__) + '/helpers/*.rb'].each {|file| require file }
 
 RSpec.configure do |config|
   config.include Capybara::DSL
-  config.include CupriteHelpers
+  config.include CupriteHelper
 
   # Run tests in random order
   config.order = :random
