@@ -38,6 +38,6 @@ Browser options:
 ## Encryption
 Using NPM built in [Crypto](https://nodejs.org/api/crypto.html) package
 
-### Note on AUth
+### Note on Auth
 Playwrite has an [auth handling code](https://playwright.dev/docs/auth) which stores auth data from the browser context. 
-The site being used in this demo code is a toy site that doesnt have serious. 
+The site being used in this demo code is a toy site that doesnt have serious auth handling.
