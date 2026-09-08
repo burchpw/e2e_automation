@@ -8,3 +8,6 @@ Test Automation built to run against [Practice Test Austomation](https://practic
 Ruby browser based testing using Chrome browser API   
 
 see Readme [here](ruby/README.md)
+
+## Playwrite JS
+JS browser based testing using Chromium, Firefox, and Webkit
