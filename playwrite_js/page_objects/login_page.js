@@ -5,7 +5,7 @@ export class LoginPage {
 
     constructor( page ) {
         this.page = page;
-    };
+    }
 
     goto() {
         return this.page.goto('practice-test-login');

@@ -33,7 +33,7 @@ Browser options:
 3. webkit 
 
 ### Run for specific test file:
-`yarn playwright test tests/example.spec.js`
+`yarn playwright test specs/example.login.spec.js`
 
 ## Encryption
 Using NPM built in [Crypto](https://nodejs.org/api/crypto.html) package
