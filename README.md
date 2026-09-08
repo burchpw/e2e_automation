@@ -11,3 +11,5 @@ see Readme [here](ruby/README.md)
 
 ## Playwrite JS
 JS browser based testing using Chromium, Firefox, and Webkit
+
+see Readme [here](playwrite_js/README.md)
