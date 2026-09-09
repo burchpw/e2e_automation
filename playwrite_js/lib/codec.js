@@ -80,10 +80,9 @@ export default class Codec {
         decrypted += decipher.final('utf8');    
         // Return as JSON
         try {
-          return JSON.parse(decrypted);
-        } catch (err) {
-          throw new Error("Decryption failed or data is corrupted");
-        }
+            return JSON.parse(decrypted);
+        } catch { 
+            throw new Error("Decryption failed or data is corrupted");}
     }
 
     async decryptToFile() {
@@ -124,16 +123,17 @@ export default class Codec {
         decipher.setAuthTag(tagBuffer);
 
         try {
-            // Stream the decryption payload to the target file
-            await pipeline(readStream, decipher, writeStream);
+        // Stream the decryption payload to the target file
+        await pipeline(readStream, decipher, writeStream);
 
-            // Clean up the encrypted file only after a successful execution
-            await fs.promises.unlink(encryptedPath);
+        // Clean up the encrypted file only after a successful execution
+         await fs.promises.unlink(encryptedPath);
 
         } catch (err) {
-            // Delete the incomplete/corrupted unencrypted file if decryption fails
-            try { await fs.promises.unlink(this.filePath); } catch {}
-            throw new Error(`Decryption failed: ${err.message}`);
+            // force: true ignores the error if the file doesn't exist or can't be deleted
+            await fs.promises.rm(this.filePath, { force: true });
+    
+            throw new Error(`Decryption failed: ${err.message}`, { cause: err });
         }
     }
 }

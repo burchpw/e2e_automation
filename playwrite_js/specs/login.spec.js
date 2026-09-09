@@ -5,7 +5,7 @@ import { LogoutPage } from '../page_objects/logout_page.js';
 
 // Fixture to handle loading credentials
 const test = baseTest.extend({
-    credentials: async ({ page }, use) => {
+    credentials: async ( { }, use) => {
         const login_credentials = new LogInHelper();
         await login_credentials.init();
         await use(login_credentials);
