@@ -41,3 +41,9 @@ Using NPM built in [Crypto](https://nodejs.org/api/crypto.html) package
 ### Note on Auth
 Playwrite has an [auth handling code](https://playwright.dev/docs/auth) which stores auth data from the browser context. 
 The site being used in this demo code is a toy site that doesnt have serious auth handling.
+
+## Linting
+Setup Eslint and added plugin to VSC to lint on save.
+
+### Run Eslint
+`yarn eslint .`
