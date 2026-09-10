@@ -1,13 +1,14 @@
-const { default: crypto } = await import('crypto');
-const { default: fs } = await import('fs');
-const { pipeline } = await import('stream/promises');
+import crypto from 'crypto';
+import fs from 'fs';
+import pipeline from 'node:stream/promises';
+
 // Usage Exameple:
 // const codec = new Codec('your_secure_32_byte_key_in_hex', 'encrypted_data/credentials.json');
 // await codec.encryptFile();
 // const data = await codec.decryptData();
 // console.log(data.user_name);
 // await codec.decryptToFile();
-export default class Codec {
+export class Codec {
     static IV_LENGTH = 12;
     static AUTH_TAG_LENGTH = 16;
     static ALGORITHM = 'aes-256-gcm';
