@@ -1,6 +1,6 @@
 # JS Automation
 ## Summary 
-JS browser based automation using Playwrght
+JS browser based automation using Playwright
 
 ## Development Environment
 NodeJS: 26.2.0
