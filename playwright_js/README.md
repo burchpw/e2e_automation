@@ -7,7 +7,7 @@ NodeJS: 26.2.0
 Yarn: 1.22.22
 Packages Used:
 1. [Corepack](https://www.npmjs.com/package/corepack)
-2. [Playwrite](https://playwright.dev/)
+2. [Playwright](https://playwright.dev/)
 3. [DotEnv](https://github.com/motdotla/dotenv)
 4. [EsLint](https://eslint.org/)
 
@@ -17,7 +17,7 @@ Packages Used:
 3. Install packages using yarn `yarn install`
 
 ## Running Tests
-[Playwrite running Tests](https://playwright.dev/docs/running-tests)
+[Playwright running Tests](https://playwright.dev/docs/running-tests)
 ### Run headless for all browsers:
 `yarn playwright test`
 
@@ -33,7 +33,7 @@ Browser options:
 3. webkit 
 
 ### Run for specific test file:
-`yarn playwright test specs/example.login.spec.js`
+`yarn playwright test specs/login.spec.js`
 
 ## Encryption
 Using NPM built in [Crypto](https://nodejs.org/api/crypto.html) package

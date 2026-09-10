@@ -1,0 +1,19 @@
+{
+  "name": "playwrite_js",
+  "version": "1.0.0",
+  "description": "playwrite e2e automation using js",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.2",
+    "eslint": "^10.10.0",
+    "globals": "^17.12.0"
+  },
+  "scripts": {},
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}
