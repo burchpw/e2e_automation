@@ -9,7 +9,7 @@ Ruby browser based testing using Chrome browser API
 
 see Readme [here](ruby/README.md)
 
-## Playwrite JS
+## Playwright JS
 JS browser based testing using Chromium, Firefox, and Webkit
 
-see Readme [here](playwrite_js/README.md)
+see Readme [here](playwright_js/README.md)
