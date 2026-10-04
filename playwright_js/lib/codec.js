@@ -8,7 +8,7 @@ import pipeline from 'node:stream/promises';
 // const data = await codec.decryptData();
 // console.log(data.user_name);
 // await codec.decryptToFile();
-export class Codec {
+export default class Codec {
     static IV_LENGTH = 12;
     static AUTH_TAG_LENGTH = 16;
     static ALGORITHM = 'aes-256-gcm';
