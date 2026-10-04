@@ -26,6 +26,7 @@ Gems Used:
 6. [Lockbox](https://github.com/ankane/lockbox)
 7. [Yaml](https://github.com/ruby/yaml)
 8. [Dotenv](https://github.com/bkeepers/dotenv)
+9. [SitePrism](https://github.com/site-prism/site_prism)
 
 ## Setup
 1. Install [Bundler](https://bundler.io/) `gem install bundler -v 4.0.6`   
