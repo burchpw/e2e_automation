@@ -27,6 +27,7 @@ export class ExceptionPage {
 }
 
 class RowElements {
+    
     constructor( rowLocator ) {
         this.row = rowLocator;
         this.add_button = rowLocator.locator('#add_btn');
@@ -34,5 +35,5 @@ class RowElements {
         this.save_button = rowLocator.locator('#save_btn');
         this.edit_button = rowLocator.locator('#edit_btn');
         this.text_field = rowLocator.locator('input[type="text"]');
-    }
+    }  
 }
