@@ -4,7 +4,7 @@ JS browser based automation using Playwright
 
 ## Development Environment
 NodeJS: 26.11.0
-Yarn: 1.22.22
+Yarn: 4.18.1
 Packages Used:
 1. [Corepack](https://www.npmjs.com/package/corepack)
 2. [Playwright](https://playwright.dev/)
