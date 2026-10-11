@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN npm install -g corepack@latest && corepack enable
 
 # Copy Packages
-COPY package*.json yarn.lock ./
+COPY package*.json yarn.lock* ./
 
 # Install Yarn
 RUN yarn install --immutable
