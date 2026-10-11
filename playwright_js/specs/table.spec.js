@@ -119,6 +119,5 @@ test.describe('Table Page', () => {
         const course_name_sorted = course_name.sort();
 
         expect(course_name).toEqual(course_name_sorted)
-
     })
 })
