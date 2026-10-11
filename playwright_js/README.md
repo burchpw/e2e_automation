@@ -3,7 +3,7 @@
 JS browser based automation using Playwright
 
 ## Development Environment
-NodeJS: 26.2.0
+NodeJS: 26.11.0
 Yarn: 1.22.22
 Packages Used:
 1. [Corepack](https://www.npmjs.com/package/corepack)
@@ -47,3 +47,24 @@ Setup Eslint and added plugin to VSC to lint on save.
 
 ### Run Eslint
 `yarn eslint .`
+
+## Docker Setup
+Install [Docker Desktop](https://docs.docker.com/desktop/)
+
+### Build Docker Image
+Run the following command to build a docker image:  
+```bash
+docker build -t playwright_js:latest .
+```
+
+This creates an image named `playwright_js` with the image tag being `latest`
+### Run Tests In Docker
+After building the docker image run the following command to run the tests:
+
+Run All Tests in Chromium:  
+```bash
+docker run --rm -e CREDENTIAL_KEY=#{key} -v `pwd`/test_results:/playwright_js/test_results playwright_js:latest yarn exec playwright test login.spec.js --project=chromium
+```
+
+Results sotred in the `test-results` folder
+

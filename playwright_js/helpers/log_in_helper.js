@@ -6,11 +6,17 @@ export class LogInHelper {
     constructor() {
         // env file located at playwrite_js/.env
         dotenv.config({ path: path.resolve(import.meta.dirname, '..', '.env') });
-        this.codec = new Codec(process.env.CREDENTIAL_KEY, path.resolve(import.meta.dirname,'..','encrypted_data/credentials.json'));
+        const encryptedFilePath = path.resolve(import.meta.dirname, '..', 'encrypted_data', 'credentials.json');
+        this.codec = new Codec(process.env.CREDENTIAL_KEY, encryptedFilePath);
         this.data = null; 
     }
 
     async init() {
+
+    if (!process.env.CREDENTIAL_KEY) {
+        throw new Error("CRITICAL: CREDENTIAL_KEY environment variable is not defined!");
+    }
+
     if (!this.data) {
       this.data = await this.codec.decryptData();
     }
