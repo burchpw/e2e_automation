@@ -23,7 +23,7 @@ export class LogInHelper {
     return this;
     }
 
-    user_name() {
+    userName() {
         return this.data.user_name;
     }
 

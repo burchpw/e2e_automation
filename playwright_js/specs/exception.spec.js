@@ -4,8 +4,8 @@ import { ExceptionPage } from '../page_objects/exception_page.js';
 // Fixture to load page object
 const test = baseTest.extend({
     exceptionPage: async( { page }, use) => {
-         const exception_page = new ExceptionPage(page);
-         await use(exception_page);
+         const exceptionPage = new ExceptionPage(page);
+         await use(exceptionPage);
     }
 });
 
@@ -14,76 +14,76 @@ test.describe('Exception Page', () => {
     test('handles adding row', async ({ exceptionPage }) => {
         await exceptionPage.goto();
         // Not assigning to const since its used once
-        await exceptionPage.row('1').add_button.click();
+        await exceptionPage.row('1').addButton.click();
         
-        await expect(exceptionPage.confirmation_message()).toHaveText('Row 2 was added');
+        await expect(exceptionPage.confirmationMessage()).toHaveText('Row 2 was added');
     });
 
     test('handles removing row', async ({ exceptionPage }) => {
-        const first_row = exceptionPage.row('1');
-        const second_row = exceptionPage.row('2');
+        const firstRow = exceptionPage.row('1');
+        const secondRow = exceptionPage.row('2');
         
         await exceptionPage.goto();
 
-        await first_row.add_button.click();
+        await firstRow.addButton.click();
 
-        await expect(exceptionPage.confirmation_message()).toHaveText('Row 2 was added');
+        await expect(exceptionPage.confirmationMessage()).toHaveText('Row 2 was added');
 
-        await second_row.remove_button.click();
+        await secondRow.removeButton.click();
 
-        await expect(exceptionPage.confirmation_message()).toHaveText('Row 2 was removed');
+        await expect(exceptionPage.confirmationMessage()).toHaveText('Row 2 was removed');
     });
 
     test('saves text to added row', async ({ exceptionPage }) => {
-        const test_text = 'Test Adding Row';
-        const first_row = exceptionPage.row('1');
-        const second_row = exceptionPage.row('2');
+        const testText = 'Test Adding Row';
+        const firstRow = exceptionPage.row('1');
+        const secondRow = exceptionPage.row('2');
         
         await exceptionPage.goto();
 
-        await first_row.add_button.click();
+        await firstRow.addButton.click();
 
-        await expect(exceptionPage.confirmation_message()).toHaveText('Row 2 was added');
+        await expect(exceptionPage.confirmationMessage()).toHaveText('Row 2 was added');
 
-        await second_row.text_field.fill(test_text);
+        await secondRow.textField.fill(testText);
 
-        await second_row.save_button.click();
+        await secondRow.saveButton.click();
 
-        await expect(exceptionPage.confirmation_message()).toHaveText('Row 2 was saved');
+        await expect(exceptionPage.confirmationMessage()).toHaveText('Row 2 was saved');
 
-        await expect(second_row.text_field).toHaveValue(test_text);
+        await expect(secondRow.textField).toHaveValue(testText);
     });
 
     test('updates text on first row', async ({ exceptionPage }) => {
-        const test_text = 'Test Updating Text';
-        const first_row = exceptionPage.row('1');
+        const testText = 'Test Updating Text';
+        const firstRow = exceptionPage.row('1');
 
         await exceptionPage.goto();
 
-        await first_row.edit_button.click();
+        await firstRow.editButton.click();
 
-        await expect(first_row.save_button).toBeVisible();
+        await expect(firstRow.saveButton).toBeVisible();
 
-        await first_row.text_field.fill(test_text);
+        await firstRow.textField.fill(testText);
 
-        await first_row.save_button.click();
+        await firstRow.saveButton.click();
 
-        await expect(exceptionPage.confirmation_message()).toHaveText('Row 1 was saved');
+        await expect(exceptionPage.confirmationMessage()).toHaveText('Row 1 was saved');
 
-        await expect(first_row.text_field).toHaveValue(test_text);
+        await expect(firstRow.textField).toHaveValue(testText);
     });
   
      test('instructions removed when adding row', async ({ exceptionPage }) => {
-        const first_row = exceptionPage.row('1');
+        const firstRow = exceptionPage.row('1');
         
         await exceptionPage.goto();
 
-        await expect(exceptionPage.instructions_text()).toHaveText('Push “Add” button to add another row');
+        await expect(exceptionPage.instructionsText()).toHaveText('Push “Add” button to add another row');
 
-        await first_row.add_button.click();
+        await firstRow.addButton.click();
         
-        await expect(exceptionPage.confirmation_message()).toHaveText('Row 2 was added');
+        await expect(exceptionPage.confirmationMessage()).toHaveText('Row 2 was added');
 
-        await expect(exceptionPage.instructions_text()).toHaveCount(0);
+        await expect(exceptionPage.instructionsText()).toHaveCount(0);
     });
 });

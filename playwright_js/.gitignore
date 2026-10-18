@@ -1,3 +1,17 @@
+# Ignore local node_modules and PnP execution files
+node_modules/
+.pnp.*
+
+# Ignore the Yarn directory by default (including install-state.gz)
+.yarn/*
+
+# Un-ignore the critical Yarn 4 engine and configuration files
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
 
 # Playwright
 node_modules/
