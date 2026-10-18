@@ -4,8 +4,8 @@ import { TablePage } from '../page_objects/table_page.js';
 // Fixture to load page object
 const test = baseTest.extend({
     tablePage: async( { page }, use) => {
-         const table_page = new TablePage(page);
-         await use(table_page);
+         const tablePage = new TablePage(page);
+         await use(tablePage);
     }
 });
 
@@ -14,54 +14,54 @@ test.describe('Table Page', () => {
     test('filters by language Java', async ({ tablePage }) => {
         await tablePage.goto();
 
-        await tablePage.language_filter('Java').click();
+        await tablePage.languageFilter('Java').click();
 
-        const languages = await tablePage.getColumnTextList('row_language');
+        const languages = await tablePage.getColumnTextList('rowLanguage');
         expect(languages.every(lang => lang === 'Java')).toBe(true);
     });
 
     test('filters by level beginner only',  async ({ tablePage }) => {
         await tablePage.goto();
 
-        await tablePage.level_filter('Intermediate').click();
+        await tablePage.levelFilter('Intermediate').click();
         
-        await tablePage.level_filter('Advanced').click();
+        await tablePage.levelFilter('Advanced').click();
 
-        const level = await tablePage.getColumnTextList('row_level');
+        const level = await tablePage.getColumnTextList('rowLevel');
         expect(level.every(level => level === 'Beginner')).toBe(true);
     });
 
     test('filters by minimum enrollment 10,000+', async ({ tablePage }) => {
         await tablePage.goto();
 
-        await tablePage.minimum_enrollment().click();
-        await tablePage.select_min_enrollment().ten_thousand.click();
+        await tablePage.minimumEnrollment().click();
+        await tablePage.selectMinEnrollment().tenThousand.click();
 
-        const enrollment = await tablePage.getColumnTextList('row_enrollment');
+        const enrollment = await tablePage.getColumnTextList('rowEnrollment');
         expect(enrollment.every(enroll => enroll > 10000)).toBe(true);
     });
 
     test('filters by combined filters Python, Beginner, and 10,000+', async ({ tablePage }) => {
         await tablePage.goto();
 
-        await tablePage.language_filter('Python').click();
+        await tablePage.languageFilter('Python').click();
 
-        await tablePage.level_filter('Intermediate').click();
-        await tablePage.level_filter('Advanced').click();
+        await tablePage.levelFilter('Intermediate').click();
+        await tablePage.levelFilter('Advanced').click();
 
-        await tablePage.minimum_enrollment().click();
-        await tablePage.select_min_enrollment().ten_thousand.click();
+        await tablePage.minimumEnrollment().click();
+        await tablePage.selectMinEnrollment().tenThousand.click();
 
-        const languages = await tablePage.getColumnTextList('row_language');
+        const languages = await tablePage.getColumnTextList('rowLanguage');
         expect(languages.every(lang => lang === 'Python')).toBe(true);
 
-        const level = await tablePage.getColumnTextList('row_level');
+        const level = await tablePage.getColumnTextList('rowLevel');
         expect(level.every(level => level === 'Beginner')).toBe(true);
 
-        const enrollment = await tablePage.getColumnTextList('row_enrollment');
+        const enrollment = await tablePage.getColumnTextList('rowEnrollment');
         expect(enrollment.every(enroll => enroll > 10000)).toBe(true);
 
-        const id = await tablePage.getColumnTextList('row_id');
+        const id = await tablePage.getColumnTextList('rowId');
         expect(id).toHaveLength(1);
         expect(id).toContain('4824578')
     });
@@ -69,55 +69,55 @@ test.describe('Table Page', () => {
     test('filters by combined filters for no result', async ({ tablePage }) => {
         await tablePage.goto();
 
-        await tablePage.language_filter('Python').click();
+        await tablePage.languageFilter('Python').click();
 
-        await tablePage.level_filter('Beginner').click();
+        await tablePage.levelFilter('Beginner').click();
 
-        await tablePage.minimum_enrollment().click();
-        await tablePage.select_min_enrollment().ten_thousand.click();
+        await tablePage.minimumEnrollment().click();
+        await tablePage.selectMinEnrollment().tenThousand.click();
 
-        await expect(tablePage.no_data_msg()).toBeVisible(true)
+        await expect(tablePage.noDataMsg()).toBeVisible(true)
     });
 
     test('resets filters with reset button', async ({ tablePage }) => {
         await tablePage.goto();
     
-        await tablePage.language_filter('Java').click();
+        await tablePage.languageFilter('Java').click();
 
-        const languages = await tablePage.getColumnTextList('row_language');
+        const languages = await tablePage.getColumnTextList('rowLanguage');
         expect(languages.every(lang => lang === 'Java')).toBe(true);
 
-        await tablePage.reset_button().click();
+        await tablePage.resetButton().click();
 
-        expect(tablePage.language_filter('any')).toBeChecked();
+        expect(tablePage.languageFilter('any')).toBeChecked();
 
-        expect(tablePage.level_filter('Beginner')).toBeChecked();
-        expect(tablePage.level_filter('Intermediate')).toBeChecked();
-        expect(tablePage.level_filter('Advanced')).toBeChecked();
+        expect(tablePage.levelFilter('Beginner')).toBeChecked();
+        expect(tablePage.levelFilter('Intermediate')).toBeChecked();
+        expect(tablePage.levelFilter('Advanced')).toBeChecked();
 
-        expect(tablePage.selected_enrollment()).toHaveText('Any');
+        expect(tablePage.selectedEnrollment()).toHaveText('Any');
     })
 
     test('sorts courses table by selected sort Enrollments ascending', async ({ tablePage }) => {
         await tablePage.goto();
 
-        await tablePage.sort_select('Enrollments')
+        await tablePage.sortSelect('Enrollments')
 
-        const enrollment = await tablePage.getColumnTextList('row_enrollment');
-        const enrollment_number = enrollment.map(Number)
-        const enrollment_sorted = enrollment_number.sort((a, b) => a - b);
+        const enrollment = await tablePage.getColumnTextList('rowEnrollment');
+        const enrollmentNumber = enrollment.map(Number)
+        const enrollmentSorted = enrollmentNumber.sort((a, b) => a - b);
 
-        expect(enrollment_number).toEqual(enrollment_sorted);
+        expect(enrollmentNumber).toEqual(enrollmentSorted);
     })
 
     test('sorts course table by selected sort Course Name alphabetical', async ({ tablePage }) => { 
         await tablePage.goto();
         
-        await tablePage.sort_select('Course Name')
+        await tablePage.sortSelect('Course Name')
 
-        const course_name = await tablePage.getColumnTextList('row_course');
-        const course_name_sorted = course_name.sort();
+        const courseName = await tablePage.getColumnTextList('rowCourse');
+        const courseNameSorted = courseName.sort();
 
-        expect(course_name).toEqual(course_name_sorted)
+        expect(courseName).toEqual(courseNameSorted)
     })
 })

@@ -7,7 +7,7 @@ export class LogoutPage {
         this.page = page;
     }
 
-    log_out_button() {
+    logOutButton() {
         return this.page.getByRole('link', { name: 'Log out' });
     }
 }

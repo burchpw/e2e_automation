@@ -11,19 +11,19 @@ export class LoginPage {
         return this.page.goto('practice-test-login');
     }
     
-    user_name_field() {
+    userNameField() {
         return this.page.getByLabel('Username');
     }
 
-    password_field() {
+    passwordField() {
         return this.page.getByLabel('Password');
     }
 
-    submit_button() {
+    submitButton() {
         return this.page.getByRole('button', { name: 'Submit' });
     }
 
-    error_message() {
+    errorMessage() {
         return this.page.locator('div#error');
     }
 }

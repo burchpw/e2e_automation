@@ -12,11 +12,11 @@ export class ExceptionPage {
         return this.page.goto('practice-test-exceptions');
     }
 
-    confirmation_message() {
+    confirmationMessage() {
         return this.page.locator('#confirmation');
     }
 
-    instructions_text() {
+    instructionsText() {
         return this.page.locator('#instructions');
     }
 
@@ -30,10 +30,10 @@ class RowElements {
     
     constructor( rowLocator ) {
         this.row = rowLocator;
-        this.add_button = rowLocator.locator('#add_btn');
-        this.remove_button = rowLocator.locator('#remove_btn');
-        this.save_button = rowLocator.locator('#save_btn');
-        this.edit_button = rowLocator.locator('#edit_btn');
-        this.text_field = rowLocator.locator('input[type="text"]');
+        this.addButton = rowLocator.locator('#add_btn');
+        this.removeButton = rowLocator.locator('#remove_btn');
+        this.saveButton = rowLocator.locator('#save_btn');
+        this.editButton = rowLocator.locator('#edit_btn');
+        this.textField = rowLocator.locator('input[type="text"]');
     }  
 }
