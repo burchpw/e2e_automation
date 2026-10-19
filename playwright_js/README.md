@@ -63,8 +63,20 @@ After building the docker image run the following command to run the tests:
 
 Run All Tests in Chromium:  
 ```bash
-docker run --rm -e CREDENTIAL_KEY=#{key} -v `pwd`/test_results:/playwright_js/test_results playwright_js:latest yarn exec playwright test login.spec.js --project=chromium
+docker run --rm -e CI="true" -e CREDENTIAL_KEY=#{key} --shm-size="2g" -v `pwd`/test-results:/playwright_js/test_results -v `pwd`/playwright-report:/playwright_js/playwright-report playwright_js:latest yarn exec playwright test login.spec.js --project=chromium
 ```
 
 Results sotred in the `test-results` folder
 
+## Docker Compose
+### Build Image With Docker Compose
+Run the following command to build:   
+```bash
+docker compose build
+```
+
+### Running Test In Docker Compose
+After building the docker image:
+```bash
+docker compose up
+```

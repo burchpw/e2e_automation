@@ -1,0 +1,16 @@
+services:
+  app:
+    image: playwright_js
+    shm_size: '2gb'
+    build:
+      context: .
+    environment:
+      CREDENTIAL_KEY: ${CREDENTIAL_KEY}
+      CI: "true"
+    volumes:
+      - ${PWD}/test-results:/playwright_js/test-results
+      - ${PWD}/playwright-report:/playwright_js/playwright-report
+    command:
+      - bash
+      - -c
+      - 'yarn exec playwright test --project=chromium'

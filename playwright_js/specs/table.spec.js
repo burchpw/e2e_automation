@@ -17,7 +17,7 @@ test.describe('Table Page', () => {
         await tablePage.languageFilter('Java').click();
 
         const languages = await tablePage.getColumnTextList('rowLanguage');
-        expect(languages.every(lang => lang === 'Java')).toBe(true);
+       await expect(languages.every(lang => lang === 'Java')).toBe(true);
     });
 
     test('filters by level beginner only',  async ({ tablePage }) => {
@@ -28,7 +28,7 @@ test.describe('Table Page', () => {
         await tablePage.levelFilter('Advanced').click();
 
         const level = await tablePage.getColumnTextList('rowLevel');
-        expect(level.every(level => level === 'Beginner')).toBe(true);
+        await expect(level.every(level => level === 'Beginner')).toBe(true);
     });
 
     test('filters by minimum enrollment 10,000+', async ({ tablePage }) => {
@@ -38,7 +38,7 @@ test.describe('Table Page', () => {
         await tablePage.selectMinEnrollment().tenThousand.click();
 
         const enrollment = await tablePage.getColumnTextList('rowEnrollment');
-        expect(enrollment.every(enroll => enroll > 10000)).toBe(true);
+        await expect(enrollment.every(enroll => enroll > 10000)).toBe(true);
     });
 
     test('filters by combined filters Python, Beginner, and 10,000+', async ({ tablePage }) => {
@@ -53,17 +53,17 @@ test.describe('Table Page', () => {
         await tablePage.selectMinEnrollment().tenThousand.click();
 
         const languages = await tablePage.getColumnTextList('rowLanguage');
-        expect(languages.every(lang => lang === 'Python')).toBe(true);
+        await expect(languages.every(lang => lang === 'Python')).toBe(true);
 
         const level = await tablePage.getColumnTextList('rowLevel');
-        expect(level.every(level => level === 'Beginner')).toBe(true);
+        await expect(level.every(level => level === 'Beginner')).toBe(true);
 
         const enrollment = await tablePage.getColumnTextList('rowEnrollment');
-        expect(enrollment.every(enroll => enroll > 10000)).toBe(true);
+        await expect(enrollment.every(enroll => enroll > 10000)).toBe(true);
 
         const id = await tablePage.getColumnTextList('rowId');
-        expect(id).toHaveLength(1);
-        expect(id).toContain('4824578')
+        await expect(id).toHaveLength(1);
+        await expect(id).toContain('4824578')
     });
 
     test('filters by combined filters for no result', async ({ tablePage }) => {
@@ -85,17 +85,17 @@ test.describe('Table Page', () => {
         await tablePage.languageFilter('Java').click();
 
         const languages = await tablePage.getColumnTextList('rowLanguage');
-        expect(languages.every(lang => lang === 'Java')).toBe(true);
+        await expect(languages.every(lang => lang === 'Java')).toBe(true);
 
         await tablePage.resetButton().click();
 
-        expect(tablePage.languageFilter('any')).toBeChecked();
+        await expect(tablePage.languageFilter('any')).toBeChecked();
 
-        expect(tablePage.levelFilter('Beginner')).toBeChecked();
-        expect(tablePage.levelFilter('Intermediate')).toBeChecked();
-        expect(tablePage.levelFilter('Advanced')).toBeChecked();
+        await expect(tablePage.levelFilter('Beginner')).toBeChecked();
+        await expect(tablePage.levelFilter('Intermediate')).toBeChecked();
+        await expect(tablePage.levelFilter('Advanced')).toBeChecked();
 
-        expect(tablePage.selectedEnrollment()).toHaveText('Any');
+        await expect(tablePage.selectedEnrollment()).toHaveText('Any');
     })
 
     test('sorts courses table by selected sort Enrollments ascending', async ({ tablePage }) => {
@@ -107,7 +107,7 @@ test.describe('Table Page', () => {
         const enrollmentNumber = enrollment.map(Number)
         const enrollmentSorted = enrollmentNumber.sort((a, b) => a - b);
 
-        expect(enrollmentNumber).toEqual(enrollmentSorted);
+        await expect(enrollmentNumber).toEqual(enrollmentSorted);
     })
 
     test('sorts course table by selected sort Course Name alphabetical', async ({ tablePage }) => { 
@@ -118,6 +118,6 @@ test.describe('Table Page', () => {
         const courseName = await tablePage.getColumnTextList('rowCourse');
         const courseNameSorted = courseName.sort();
 
-        expect(courseName).toEqual(courseNameSorted)
+        await expect(courseName).toEqual(courseNameSorted)
     })
 })
